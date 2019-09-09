@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Table } from 'antd'
 import isEqual from 'lodash/isEqual'
-import { arrayToObject } from '../../utils'
+import arrayToObject from './utils'
 
-const SelectTable = (props)=> {
+const SelectTable = (props) => {
   const { rowKey } = props
   const propsRowSelection = props.rowSelection || {}
   const rowOnChange = propsRowSelection.onChange ? propsRowSelection.onChange : (() => {})
@@ -17,7 +17,7 @@ const SelectTable = (props)=> {
     setSelectedRowKeys(tempKeys)
     rowOnChange(tempKeys, tempRows)
   }
-  const setOneSelectRow = (record, selected)=> {
+  const setOneSelectRow = (record, selected) => {
     const tempSelectedMap = { ...selectedMap }
     if (selected) {
       tempSelectedMap[record[rowKey]] = record
@@ -43,7 +43,7 @@ const SelectTable = (props)=> {
   }
 
   useEffect(() => {
-    const propsKeys = propsRowSelection.selectedRows.map(row => row[rowKey])
+    const propsKeys = propsRowSelection.selectedRows.map((row) => row[rowKey])
     if (propsKeys && (!isEqual(propsKeys, selectedRowKeys))) {
       setSelectedMap(arrayToObject(propsRowSelection.selectedRows, rowKey))
       setSelectedRowKeys(propsKeys)

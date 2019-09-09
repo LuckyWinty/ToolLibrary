@@ -1,23 +1,23 @@
-const baseConf = require("./rollup.base");
-const serve = require("rollup-plugin-serve");
-const path = require("path");
+const serve = require('rollup-plugin-serve')
+const path = require('path')
+const baseConf = require('./rollup.base')
 
-const componentName = process.env.COMPONENT;
-const port = process.env.PORT || 8088;
+const componentName = process.env.COMPONENT
+const port = process.env.PORT || 8088
 
 module.exports = {
   input: path.resolve(__dirname, `../src/${componentName}/index.ts`),
   output: {
     file: path.resolve(__dirname, `../src/${componentName}/examples/index.js`),
-    format: "umd",
+    format: 'umd',
     name: `${componentName}`,
-    sourceMap: "inline"
+    sourceMap: 'inline',
   },
   plugins: [
     ...baseConf.plugins,
     serve({
       port,
-      contentBase: ["examples"],
+      contentBase: ['examples'],
     })
-  ]
-};
+  ],
+}
