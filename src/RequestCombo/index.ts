@@ -105,7 +105,7 @@ export const requestCombo = (apiData: ApiData, params: object, callback?: Functi
                 } else {
                     busData[busKey].paramList.push(params); // 加入参数队列
                     if (busData[busKey].paramList.length >= maxComboNum) {
-                        // 立即发车
+                        // 发起请求
                         sendRequest();
                     }
                 }
