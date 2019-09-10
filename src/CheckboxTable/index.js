@@ -55,21 +55,19 @@ const SelectTable = (props) => {
   } = props
 
   return (
-    <>
-      <Table
-        align="center"
-        scroll={{ x: xscorll || 'max-content' }}
-        dataSource={list}
-        {...rest}
-        rowSelection={{
-          ...rowSelection,
-          type: 'checkbox',
-          selectedRowKeys,
-          onSelect: setOneSelectRow,
-          onSelectAll: setAllSelectRow,
-        }}
-      />
-    </>
+    <Table
+      align="center"
+      scroll={{ x: xscorll || 'max-content' }}
+      dataSource={list}
+      {...rest}  //eslint-disable-line
+      rowSelection={{
+        ...rowSelection,
+        type: 'checkbox',
+        selectedRowKeys,
+        onSelect: setOneSelectRow,
+        onSelectAll: setAllSelectRow,
+      }}
+    />
   )
 }
 export default SelectTable
