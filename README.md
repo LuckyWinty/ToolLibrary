@@ -21,7 +21,9 @@ collectTime = 100,
 isCombo = true, 
 errorHandle?: Function
 ```
+
 ApiData 类型中包含以下内容：
+
 |    params    | Description | Type    | Example |
 | ----------   | ----------- | ------- | ------- |
 |   url        | 接口地址     | string  | http:xxx/api |
