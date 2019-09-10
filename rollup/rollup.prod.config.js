@@ -1,12 +1,12 @@
 const filesize = require('rollup-plugin-filesize')
-const { uglify } = require('rollup-plugin-uglify')
-const { minify } = require('uglify-es')
 const path = require('path')
 const { terser } = require('rollup-plugin-terser')
 const baseConf = require('./rollup.base')
 const { name, version, author } = require('../package.json')
 
 const componentName = process.env.COMPONENT
+const componentType = process.env.COMPONENT_TYPE || 'js'
+
 const banner = `${'/*!\n* '}${name}.js v${version}\n`
   + ` * (c) 2018-${new Date().getFullYear()} ${author}\n`
   + ' * Released under the MIT License.\n'
@@ -14,7 +14,7 @@ const banner = `${'/*!\n* '}${name}.js v${version}\n`
 
 module.exports = [
   {
-    input: path.resolve(__dirname, `../src/${componentName}/index.ts`),
+    input: path.resolve(__dirname, `../src/${componentName}/index.${componentType}`),
     ...baseConf,
     output: [
       {
@@ -28,10 +28,10 @@ module.exports = [
         sourcemap: true,
       }
     ],
-    plugins: [...baseConf.plugins, uglify({}, minify), filesize()],
+    plugins: [...baseConf.plugins, terser(), filesize()],
   },
   {
-    input: path.resolve(__dirname, `../src/${componentName}/index.ts`),
+    input: path.resolve(__dirname, `../src/${componentName}/index.${componentType}`),
     ...baseConf,
     output: {
       file: path.resolve(
