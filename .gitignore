@@ -1,5 +1,8 @@
 # dependencies
 /node_modules
+src/*/dist
+src/*/node_modules
+src/*/coverage
 
 # testing
 /coverage
