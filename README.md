@@ -91,7 +91,7 @@ const p1 = requestCombo(ApiData['getPrice'], { skuids: '11111' }, (data: any) =>
     const data3 = await p3;
 ```
 
-## request-combo
+## CheckboxTable
 
     CheckboxTable fix a antd Table bug.when the table type is checkbox,The rowSelection method onChange is not exactly right.
     when the table is in pagination,and selected one page and selected second page, when I cacel second page selected,It send me the selectedRows is null,which the correct answer is first page selectedRows...
